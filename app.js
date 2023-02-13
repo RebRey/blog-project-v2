@@ -14,12 +14,27 @@ app.listen(port, function () {
   console.log("Server is running on port " + port + ".");
 });
 
-// Open the connection to MongoDB local server and create the database
+// // Open the connection to MongoDB local server and create the database
+// main().catch((err) => console.log(err));
+// async function main() {
+//   mongoose.set("strictQuery", false);
+//   await mongoose.connect("mongodb://127.0.0.1/blogDB");
+//   console.log("Connected to local MongoDB server.");
+// }
+
+// Open the connection to MongoDB server and create the database
 main().catch((err) => console.log(err));
 async function main() {
   mongoose.set("strictQuery", false);
-  await mongoose.connect("mongodb://127.0.0.1/blogDB");
-  console.log("Connected to local MongoDB server.");
+  // Create a connection string for Mongo Atlas
+  const connectionURI =
+    "mongodb+srv://admin-rebecca:" +
+    process.env.MONGO_ATLAS_ADMIN_PASSWORD +
+    "@cluster0.swlgzsc.mongodb.net/todolistDB";
+  // Mongo Atlas connection
+  await mongoose.connect(connectionURI);
+
+  console.log("Connected to MongoDB server.");
 }
 
 // Create a Mongoose postSchema that contains a title and content.
@@ -82,24 +97,27 @@ app.post("/compose", function (req, res) {
   });
 
   // save the post document in your database
-  post.save();
-
-  // redirect to the root route
-  res.redirect("/");
+  // add a call back to the mongoose save() method.
+  post.save(function (err) {
+    if (!err) {
+      // redirect to the root route
+      res.redirect("/");
+    }
+  });
 });
 
 // Handle POST request for dynamic routes
-app.get("/posts/:postName", function (req, res) {
-  const requestedTitle = _.lowerCase(req.params.postName);
+// Change the express route parameter to postId
+app.get("/posts/:postId", function (req, res) {
+  // Create constant to store the postId parameter value
+  const requestedPostId = req.params.postId;
 
-  posts.forEach(function (post) {
-    const storedTitle = _.lowerCase(post.title);
-
-    if (storedTitle === requestedTitle) {
-      res.render("post", {
-        title: post.title,
-        content: post.content,
-      });
-    }
+  // Use the findOne() method to find the post with a matching id in the posts collection
+  Post.findOne({ _id: requestedPostId }, function (err, post) {
+    // Once a matching post is found, you can render its title and content in the post.ejs page
+    res.render("post", {
+      title: post.title,
+      content: post.content,
+    });
   });
 });

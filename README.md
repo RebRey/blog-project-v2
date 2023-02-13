@@ -44,6 +44,11 @@ https://www.appbrewery.co/p/web-development-course-resources/
   npm install dotenv
 ```
 
+8) Use npm to install mongoose in the current project folder. You can check that it is installed in the package.json file under dependencies. 
+```
+  npm install dotenv
+```
+
 ## Install MongoDB
 https://www.mongodb.com/try/download/community
 

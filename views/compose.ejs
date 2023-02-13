@@ -1,0 +1,38 @@
+<!-- Challenge 7 apply ejs header layout -->
+<%- include("partials/header"); -%>
+<h1>Compose</h1>
+
+<!-- Challenge 8: Create a form so that we can create a post method to publish our text after pushing a button -->
+<form action="/compose" method="post">
+    <div class="mb-3">
+    <!-- Challenge 7: Create text input and button that has the text publish -->
+    <!-- Challenge 8 give the input a name so that we can tap into the value-->
+    <label>Title</label>
+    <!-- Challenge 9 class must be form-control to add bootstrap style -->
+    <input
+      type="text"
+      class="form-control"
+      name="postTitle"
+      autocomplete="off"
+      autofocus
+    />
+    </div>
+    <div class="mb-3">
+    <!-- Challenge 8 create a multi line post input box -->
+    <label>Post</label>
+    <!-- Challenge 9 give the textarea a name so that we can tap into it with a post method -->
+    <!-- Challenge 9 class must be form-control to add bootstrap style -->
+    <textarea
+      class="form-control"
+      name="postBody"
+      rows="3"
+    ></textarea>
+  </div>
+  <!-- Challenge 8 when the user clicks the submit button, this will trigger a post request to the home route -->
+  <!-- Challenge 9 class must be btn btn-primary to add bootstrap style -->
+  <!-- Challenge 9 button must be outside of the div to give it some space from the textarea-->
+  <button type="submit" class="btn btn-primary">Publish</button>
+</form>
+
+<!-- Challenge 7 apply ejs footer layout -->
+<%- include("partials/footer"); -%>

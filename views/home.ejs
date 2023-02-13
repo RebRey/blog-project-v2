@@ -1,0 +1,40 @@
+<!-- Challenge 3 apply ejs header layout -->
+
+<!-- Inside the views folder and create a new folder called partials, move the header and footer.ejs files inside and update the locations for header  -->
+<%- include("partials/header"); -%>
+<h1>Home</h1>
+
+<!-- Challenge 2: Outputs the value into the template (HTML escaped) -->
+<p><%= startingContent %></p>
+
+<!-- Challenge 12 console.log the posts array here by using ejs Scriptlet tag-->
+<% console.log(posts); %>
+
+<!-- Challenge 13: Create a FOR loop using ejs snippets that loops through the entre length of the posts array -->
+<!-- <% for (let i=0; i < posts.length; i++) { %> -->
+<!--console.log the title of the post that is stored in the posts array, remember that the word title is the key name of the javascript object called post-->
+<!--<% console.log(posts[i].title);%> -->
+<!--  <%}; %> -->
+
+<!-- Challenge 14: use the forEach method to change the code from challenge 13 -->
+<!-- we are looping inside each of the items inside the posts array -->
+<!-- array.forEach(function(singular form of the array)) -->
+<!-- console.log(singular form of the array.value) -->
+<!-- <% posts.forEach(function(post){ %> <% console.log(post.title);%> <% }); %> -->
+
+<!-- Challenge 15: Render each item inside the posts on the homepage -->
+<!-- Challenge 15: use the ejs value tags around our javascript variables -->
+<% posts.forEach(function(post){ %>
+<h1><%= post.title %></h1>
+
+<!-- Challenge 20: the home page now truncates the content of each blog posts to only 100 characters use substring() method  -->
+<p><%= post.content.substring(0, 100) + " ..." %>
+<!-- Challenge 21: add an anchor tag that says Read More, the href should link to the complete post from the posts.ejs page -->
+<!-- post.title -->
+<a href="/posts/<%= post.kebabCaseTitle %>">Read more</a>
+</p>
+<% }); %>
+
+<!-- Challenge 3 apply ejs footer layout -->
+<!-- Inside the views folder and create a new folder called partials, move the header and footer.ejs files inside and update the locations for footer  -->
+<%- include("partials/footer"); -%>

@@ -39,6 +39,11 @@ https://www.appbrewery.co/p/web-development-course-resources/
   npm install lodash
 ```
 
+8) Use npm to install dotenv in the current project folder. You can check that it is installed in the package.json file under dependencies. 
+```
+  npm install dotenv
+```
+
 ## Install MongoDB
 https://www.mongodb.com/try/download/community
 

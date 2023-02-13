@@ -1,0 +1,26 @@
+{
+  "name": "blog-project-v2",
+  "version": "1.0.0",
+  "description": "A blog that has a MongoDB database. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RebRey/blog-project-v2.git"
+  },
+  "author": "Rebecca Reyes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RebRey/blog-project-v2/issues"
+  },
+  "homepage": "https://github.com/RebRey/blog-project-v2#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  }
+}

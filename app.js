@@ -22,7 +22,7 @@ app.listen(port, function () {
 //   console.log("Connected to local MongoDB server.");
 // }
 
-// Open the connection to MongoDB server and create the database
+// Open the connection to MongoDB Atlas and create the database
 main().catch((err) => console.log(err));
 async function main() {
   mongoose.set("strictQuery", false);
@@ -30,7 +30,7 @@ async function main() {
   const connectionURI =
     "mongodb+srv://admin-rebecca:" +
     process.env.MONGO_ATLAS_ADMIN_PASSWORD +
-    "@cluster0.swlgzsc.mongodb.net/todolistDB";
+    "@cluster0.swlgzsc.mongodb.net/blogDB";
   // Mongo Atlas connection
   await mongoose.connect(connectionURI);
 
